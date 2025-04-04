@@ -1,4 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
+import { useState } from "react";
 import { addToCart, removeFromCart } from "../../store/slices/cart-slice";
 
 export default function ProductTile({ product }) {
@@ -7,11 +8,15 @@ export default function ProductTile({ product }) {
 
   function handleAddToCart() {
     dispatch(addToCart(product));
+  
   }
 
   function handleRemoveFromCart() {
-    dispatch(removeFromCart(product.id));
+    dispatch(removeFromCart(product));
+    
   }
+
+
   return (
     <div>
       <div className="group flex flex-col items-center border-2 border-red-900 gap-3 p-4 h-[360px] mt-10 ml-5 rounded-xl">
