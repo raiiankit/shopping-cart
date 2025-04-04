@@ -1,6 +1,10 @@
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 export default function Header() {
+  const cart = useSelector((state) => state.cart); // Get cart from Redux
+  // const cartCount = cart.reduce((acc, item) => acc + item.quantity, 0); // Calculate total quantity
+
   return (
     <div>
       <nav className="flex items-center justify-between h-20 max-w-6xl mx-auto">
@@ -16,10 +20,13 @@ export default function Header() {
             <li className="cursor-pointer list-none">Home</li>
           </Link>
           <Link to={"/cart"}>
-            <li className="cursor-pointer">Cart</li>
+            <li className="cursor-pointer">
+              Cart <sup className="text-black-500 text-sm font-bold">{cart.length}</sup>
+            </li>
           </Link>
         </ul>
       </nav>
     </div>
   );
 }
+
